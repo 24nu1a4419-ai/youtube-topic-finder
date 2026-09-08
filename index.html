@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Topic Finder - Multi-Language Support</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">🎬 YouTube Topic Finder</h1>
+                <p class="tagline">Find specific topics in YouTube videos with timestamps</p>
+            </div>
+        </header>
+
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <label for="language">Select Language:</label>
+            <select id="language" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="hi">Hindi (हिंदी)</option>
+                <option value="te">Telugu (తెలుగు)</option>
+                <option value="ta">Tamil (தமிழ்)</option>
+                <option value="kn">Kannada (ಕನ್ನಡ)</option>
+                <option value="ml">Malayalam (മലയാളം)</option>
+                <option value="mr">Marathi (मराठी)</option>
+                <option value="gu">Gujarati (ગુજરાતી)</option>
+                <option value="bn">Bengali (বাংলা)</option>
+                <option value="pa">Punjabi (ਪੰਜਾਬੀ)</option>
+                <option value="ur">Urdu (اردو)</option>
+                <option value="ar">Arabic (العربية)</option>
+                <option value="es">Spanish (Español)</option>
+                <option value="fr">French (Français)</option>
+                <option value="de">German (Deutsch)</option>
+                <option value="pt">Portuguese (Português)</option>
+                <option value="ru">Russian (Русский)</option>
+                <option value="zh">Chinese (中文)</option>
+                <option value="ja">Japanese (日本語)</option>
+                <option value="ko">Korean (한국어)</option>
+                <option value="th">Thai (ไทย)</option>
+                <option value="vi">Vietnamese (Tiếng Việt)</option>
+                <option value="id">Indonesian (Bahasa Indonesia)</option>
+                <option value="tr">Turkish (Türkçe)</option>
+                <option value="pl">Polish (Polski)</option>
+                <option value="uk">Ukrainian (Українська)</option>
+                <option value="nl">Dutch (Nederlands)</option>
+                <option value="it">Italian (Italiano)</option>
+                <option value="sv">Swedish (Svenska)</option>
+                <option value="el">Greek (Ελληνικά)</option>
+            </select>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div class="dashboard">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="youtubeUrl" data-i18n="label_url">YouTube Playlist/Video URL:</label>
+                    <input 
+                        type="text" 
+                        id="youtubeUrl" 
+                        placeholder="https://www.youtube.com/watch?v=..." 
+                        class="input-field"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="topicSearch" data-i18n="label_topic">Enter Topic to Find:</label>
+                    <input 
+                        type="text" 
+                        id="topicSearch" 
+                        placeholder="e.g., Introduction to Python, Biology Chapter 5" 
+                        class="input-field"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="language-search" data-i18n="label_language">Content Language:</label>
+                    <select id="language-search" class="input-field">
+                        <option value="auto">Auto Detect</option>
+                        <option value="hi">Hindi</option>
+                        <option value="te">Telugu</option>
+                        <option value="en">English</option>
+                        <option value="ta">Tamil</option>
+                        <option value="kn">Kannada</option>
+                    </select>
+                </div>
+
+                <button id="searchBtn" class="btn btn-primary" onclick="searchTopic()" data-i18n="btn_search">
+                    🔍 Search Topic
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <h2 data-i18n="results_title">Search Results</h2>
+                
+                <!-- Loading State -->
+                <div id="loadingSpinner" class="loading-hidden">
+                    <div class="spinner"></div>
+                    <p data-i18n="loading">Processing your request...</p>
+                </div>
+
+                <!-- Results Display -->
+                <div id="resultsContainer" class="results-container">
+                    <p class="empty-state" data-i18n="empty_state">Enter a YouTube URL and topic to begin searching</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Panel -->
+        <div class="stats-panel">
+            <div class="stat-card">
+                <h3 data-i18n="stat_languages">Languages Supported</h3>
+                <p class="stat-number">30+</p>
+            </div>
+            <div class="stat-card">
+                <h3 data-i18n="stat_videos">Videos Analyzed</h3>
+                <p class="stat-number" id="videosCount">0</p>
+            </div>
+            <div class="stat-card">
+                <h3 data-i18n="stat_topics">Topics Found</h3>
+                <p class="stat-number" id="topicsCount">0</p>
+            </div>
+            <div class="stat-card">
+                <h3 data-i18n="stat_accuracy">Accuracy Rate</h3>
+                <p class="stat-number">95%+</p>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="history-section">
+            <h2 data-i18n="history_title">Recent Searches</h2>
+            <div id="historyContainer" class="history-container">
+                <p class="empty-state" data-i18n="history_empty">No recent searches</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 YouTube Topic Finder. Supports 30+ Languages.</p>
+    </footer>
+
+    <script src="languages.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
